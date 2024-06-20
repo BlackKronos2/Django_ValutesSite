@@ -1,0 +1,31 @@
+{% extends "index_base.html" %}
+{% load custom_tags %}
+
+{% block title %}Новости{% endblock %}
+
+{% block main_menu %}
+    <li><span><a href="/valutes" title="Главная страниц сайта">Главная страница</a></span></li>
+    <li class="active"><span><a href="/blog" title="Список всех новостей">Новости</a></span></li>
+    <li><span><a href="/valutes/about_company" title="Информация о компании">О компании</a></span></li>
+    <li><span><a href="/valutes/faq" title="Ответы на часто задаваемые вопросы">FAQ</a></span></li>
+    <li><span><a href="/valutes/about_site" title="Информация о сайте">О сайте</a></span></li>
+{% endblock %}
+
+{% block small_text %}
+    {{post.title}}
+    {% if perms.valutesBlog.change_currencyarticle %}
+        <p><a href="{% url 'valutesBlog:edit_article' post.slug %}">Редактировать</a></p>
+    {% endif %}
+    {% if post.photo %}
+        <p><img class="img-article-left" src="{{ post.photo.url }}"></p>
+    {% endif %}
+    {{post.full_text}}
+{% endblock %}
+
+{% block footer_indent %}
+    {% with text_length=post.full_text|length %}
+        {% for i in 100|get_range %}
+            <br>
+        {% endfor %}
+    {% endwith %}
+{% endblock %}

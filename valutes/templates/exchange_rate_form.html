@@ -1,0 +1,10 @@
+{% extends "index_base.html" %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    <label for="date">Введите дату в формате ДД/ММ/ГГГГ:</label>
+    <input type="text" name="date" id="date">
+    <button type="submit">Получить курс</button>
+  </form>
+{% endblock %}

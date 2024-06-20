@@ -1,0 +1,32 @@
+{% extends "index_base.html" %}
+{% load custom_tags %}
+
+{% block title %} Авторизация {% endblock %}
+
+{% block small_text %}
+  <div class="middle-panel">
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-error">{{ form.non_field_errors }}</div>
+
+        {% for f in form %}
+            <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
+            <div class="form-error">{{ f.errors }}</div>
+            <br>
+        {% endfor %}
+
+        <button type="submit">Войти</button>
+        <br><br>
+        <a href="{% url 'system_pages:password_reset' %}">Забыли пароль?</a>
+    </form>
+  </div>
+
+{% endblock %}
+
+
+{% block footer_indent %}
+    {% for i in 30|get_range %}
+        <br>
+    {% endfor %}
+{% endblock %}

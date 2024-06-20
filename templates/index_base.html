@@ -1,0 +1,121 @@
+{% load static %}
+{% load custom_tags %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}  {% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index_styles.css' %}">
+  </head>
+  <body>
+
+<div id="custom_style"><style type="text/css">
+.bi {font-weight: bold; color: #555555}
+.bi small {font-weight: normal}
+</style></div>
+<div id="custom_font"></div>
+<div class="wrapper">
+  <div class="header">
+    <div class="logo">
+        <img src="{% static 'images/logo.jpg' %}" tabindex="1" alt="BestChange &mdash; список надежных обменников" title="&quot;Бэстчейндж&quot; &mdash; мониторинг обменных пунктов">
+    </div>
+    <ul class="menu">
+        {% block main_menu %}
+            <li class="active"><span><a name="main" title="Мониторинг выгодных курсов от надежных обменников">Главная страница</a></span></li>
+            <li><span><a href="/blog" title="Список всех надежных обменников">Новости</a></span></li>
+            <li><span><a href="/valutes/about_company" title="Информация о компании">О компании</a></span></li>
+            <li><span><a href="/valutes/faq" title="Ответы на часто задаваемые вопросы">FAQ</a></span></li>
+            <li><span><a href="/valutes/about_site" title="Информация о сайте">О сайте</a></span></li>
+        {% endblock %}
+    </ul>
+    <dl class="info" id="headinfo">
+        {% block info_block %}
+            {% if request.user.is_authenticated %}
+                <dt>Пользователь:</dt>
+                <dd><a href="/system/profile">{{ user.username }}</a></dd>
+                <dt><a href="/system/logout">Выйти</a></dt>
+            {% else %}
+                <dt><a href="/system/login">Вход</a> | <a href="/system/register">Регистрация</a></dt>
+            {% endif %}
+            <dt>Последнее обновление:</dt>
+            <dd>13:35:37</dd>
+        {% endblock %}
+    </dl>
+    </div>
+    <div class="c-block"><div class="c-wrap"><div class="c-inner">
+
+<div class="content">
+  <div id="small_text" class="intro">
+      {% block small_text %}
+
+      {% endblock %}
+  </div>
+
+<ul class="tabs g-tabs">
+</ul>
+  <div class="bottom"></div><div id="content_rates">
+    <div id="rates_block">
+        {% block table %}
+        {% endblock %}
+  </div>
+
+<div id="big_text" class="text">
+    {% block big_text %}
+
+    {% endblock %}
+</div>
+</div>
+</div>
+
+<div class="sidebar">
+<div class="rate">
+  <ul class="tabs">
+      <!--li id="tab_tab" class="active"><a href="index.php-2.html?ct=tab" onmousedown="change_ctab('tab')" onclick="return false"><span>Таблица</span></a><i></i></li-->
+  </ul>
+  <div id="curr_top" class="hide"><ul id="direct_list"><li id="head-line">Популярные направления</li><li id="p10-42" class="alt" translate="no"><a href="tether-trc20-to-sberbank.html" title="Курсы обмена Tether TRC20 (USDT) на Сбербанк RUB">Tether TRC20 <span class="tor"></span> Сбербанк RUB <span class="tcr" title="Рейтинг обмена: +0.166922% за сутки"><span class="tou"></span>6.62%</span></a></li><li id="p42-93" translate="no"><a href="https://www.bestchange.ru/sberbank-to-bitcoin.html" title="Курсы обмена Сбербанк RUB на Bitcoin (BTC)">Сбербанк RUB <span class="tor"></span> Bitcoin <span class="tcr" title="Рейтинг обмена: -0.234047% за сутки"><span class="tod"></span>4.62%</span></a></li><li id="p10-105" class="alt" translate="no"><a href="https://www.bestchange.ru/tether-trc20-to-tinkoff.html" title="Курсы обмена Tether TRC20 (USDT) на Тинькофф RUB">Tether TRC20 <span class="tor"></span> Тинькофф RUB <span class="tcr" title="Рейтинг обмена: -0.015987% за сутки"><span class="tod"></span>3.94%</span></a></li><li id="p105-93" translate="no"><a href="https://www.bestchange.ru/tinkoff-to-bitcoin.html" title="Курсы обмена Тинькофф RUB на Bitcoin (BTC)">Тинькофф RUB <span class="tor"></span> Bitcoin <span class="tcr" title="Рейтинг обмена: -0.144555% за сутки"><span class="tod"></span>3.36%</span></a></li><li id="p42-56" class="alt" translate="no"><a href="https://www.bestchange.ru/sberbank-to-privat24-uah.html" title="Курсы обмена Сбербанк RUB на Приват 24 UAH">Сбербанк RUB <span class="tor"></span> Приват 24 UAH <span class="tcr" title="Рейтинг обмена: +0.452336% за сутки"><span class="tou"></span>3.13%</span></a></li><li id="p42-10" translate="no"><a href="https://www.bestchange.ru/sberbank-to-tether-trc20.html" title="Курсы обмена Сбербанк RUB на Tether TRC20 (USDT)">Сбербанк RUB <span class="tor"></span> Tether TRC20 <span class="tcr" title="Рейтинг обмена: +0.050977% за сутки"><span class="tou"></span>2.65%</span></a></li><li id="p105-10" class="alt" translate="no"><a href="https://www.bestchange.ru/tinkoff-to-tether-trc20.html" title="Курсы обмена Тинькофф RUB на Tether TRC20 (USDT)">Тинькофф RUB <span class="tor"></span> Tether TRC20 <span class="tcr" title="Рейтинг обмена: -0.030399% за сутки"><span class="tod"></span>1.96%</span></a></li><li id="p93-42" translate="no"><a href="https://www.bestchange.ru/bitcoin-to-sberbank.html" title="Курсы обмена Bitcoin (BTC) на Сбербанк RUB">Bitcoin <span class="tor"></span> Сбербанк RUB <span class="tcr" title="Рейтинг обмена: -0.115036% за сутки"><span class="tod"></span>1.90%</span></a></li><li id="p93-105" class="alt" translate="no"><a href="https://www.bestchange.ru/bitcoin-to-tinkoff.html" title="Курсы обмена Bitcoin (BTC) на Тинькофф RUB">Bitcoin <span class="tor"></span> Тинькофф RUB <span class="tcr" title="Рейтинг обмена: +0.079533% за сутки"><span class="tou"></span>1.35%</span></a></li><li id="p10-60" translate="no"><a href="https://www.bestchange.ru/tether-trc20-to-visa-mastercard-uah.html" title="Курсы обмена Tether TRC20 (USDT) на Visa/MasterCard UAH">Tether TRC20 <span class="tor"></span> Visa/MC UAH <span class="tcr" title="Рейтинг обмена: +0.023957% за сутки"><span class="tou"></span>1.16%</span></a></li><li id="p56-42" class="alt" translate="no"><a href="https://www.bestchange.ru/privat24-uah-to-sberbank.html" title="Курсы обмена Приват 24 UAH на Сбербанк RUB">Приват 24 UAH <span class="tor"></span> Сбербанк RUB <span class="tcr" title="Рейтинг обмена: +0.167564% за сутки"><span class="tou"></span>1.14%</span></a></li><li id="p42-185" translate="no"><a href="https://www.bestchange.ru/sberbank-to-tron.html" title="Курсы обмена Сбербанк RUB на TRON (TRX)">Сбербанк RUB <span class="tor"></span> TRON <span class="tcr" title="Рейтинг обмена: -0.065912% за сутки"><span class="tod"></span>1.06%</span></a></li><li id="p10-56" class="alt" translate="no"><a href="https://www.bestchange.ru/tether-trc20-to-privat24-uah.html" title="Курсы обмена Tether TRC20 (USDT) на Приват 24 UAH">Tether TRC20 <span class="tor"></span> Приват 24 UAH <span class="tcr" title="Рейтинг обмена: -0.042316% за сутки"><span class="tod"></span>1.00%</span></a></li><li id="p17-93" translate="no"><a href="https://www.bestchange.ru/mir-to-bitcoin.html" title="Курсы обмена Карта Мир RUB на Bitcoin (BTC)">Карта Мир RUB <span class="tor"></span> Bitcoin <span class="tcr" title="Рейтинг обмена: -0.066902% за сутки"><span class="tod"></span>0.92%</span></a></li><li id="p10-91" class="alt" translate="no"><a href="https://www.bestchange.ru/tether-trc20-to-cash-ruble.html" title="Курсы обмена Tether TRC20 (USDT) на Наличные RUB">Tether TRC20 <span class="tor"></span> Наличные RUB <span class="tcr" title="Рейтинг обмена: +0.050662% за сутки"><span class="tou"></span>0.92%</span></a></li><li id="p105-185" translate="no"><a href="https://www.bestchange.ru/tinkoff-to-tron.html" title="Курсы обмена Тинькофф RUB на TRON (TRX)">Тинькофф RUB <span class="tor"></span> TRON <span class="tcr" title="Рейтинг обмена: +0.000867% за сутки"><span class="tou"></span>0.88%</span></a></li><li id="p91-10" class="alt" translate="no"><a href="https://www.bestchange.ru/cash-ruble-to-tether-trc20.html" title="Курсы обмена Наличные RUB на Tether TRC20 (USDT)">Наличные RUB <span class="tor"></span> Tether TRC20 <span class="tcr" title="Рейтинг обмена: +0.181853% за сутки"><span class="tou"></span>0.84%</span></a></li><li id="p10-84" translate="no"><a href="https://www.bestchange.ru/tether-trc20-to-monobank.html" title="Курсы обмена Tether TRC20 (USDT) на Универсал Банк UAH">Tether TRC20 <span class="tor"></span> Универсал Банк UAH <span class="tcr" title="Рейтинг обмена: +0.074986% за сутки"><span class="tou"></span>0.82%</span></a></li><li id="p99-42" class="alt" translate="no"><a href="https://www.bestchange.ru/litecoin-to-sberbank.html" title="Курсы обмена Litecoin (LTC) на Сбербанк RUB">Litecoin <span class="tor"></span> Сбербанк RUB <span class="tcr" title="Рейтинг обмена: -0.039012% за сутки"><span class="tod"></span>0.81%</span></a></li><li id="p42-99" translate="no"><a href="https://www.bestchange.ru/sberbank-to-litecoin.html" title="Курсы обмена Сбербанк RUB на Litecoin (LTC)">Сбербанк RUB <span class="tor"></span> Litecoin <span class="tcr" title="Рейтинг обмена: -0.063883% за сутки"><span class="tod"></span>0.81%</span></a></li><li id="p139-42" class="alt" translate="no"><a href="https://www.bestchange.ru/ethereum-to-sberbank.html" title="Курсы обмена Ethereum (ETH) на Сбербанк RUB">Ethereum <span class="tor"></span> Сбербанк RUB <span class="tcr" title="Рейтинг обмена: +0.017278% за сутки"><span class="tou"></span>0.81%</span></a></li><li id="p10-52" translate="no"><a href="https://www.bestchange.ru/tether-trc20-to-alfaclick.html" title="Курсы обмена Tether TRC20 (USDT) на Альфа-Банк RUB">Tether TRC20 <span class="tor"></span> Альфа-Банк RUB <span class="tcr" title="Рейтинг обмена: +0.01405% за сутки"><span class="tou"></span>0.77%</span></a></li><li id="p105-99" class="alt" translate="no"><a href="https://www.bestchange.ru/tinkoff-to-litecoin.html" title="Курсы обмена Тинькофф RUB на Litecoin (LTC)">Тинькофф RUB <span class="tor"></span> Litecoin <span class="tcr" title="Рейтинг обмена: -0.018254% за сутки"><span class="tod"></span>0.72%</span></a></li><li id="p208-42" translate="no"><a href="https://www.bestchange.ru/tether-bep20-to-sberbank.html" title="Курсы обмена Tether BEP20 (USDT) на Сбербанк RUB">Tether BEP20 <span class="tor"></span> Сбербанк RUB <span class="tcr" title="Рейтинг обмена: -0.00697% за сутки"><span class="tod"></span>0.68%</span></a></li><li id="p10-17" class="alt" translate="no"><a href="https://www.bestchange.ru/tether-trc20-to-mir.html" title="Курсы обмена Tether TRC20 (USDT) на Карта Мир RUB">Tether TRC20 <span class="tor"></span> Карта Мир RUB <span class="tcr" title="Рейтинг обмена: -0.059303% за сутки"><span class="tod"></span>0.68%</span></a></li><li id="p42-149" translate="no"><a href="https://www.bestchange.ru/sberbank-to-monero.html" title="Курсы обмена Сбербанк RUB на Monero (XMR)">Сбербанк RUB <span class="tor"></span> Monero <span class="tcr" title="Рейтинг обмена: -0.094925% за сутки"><span class="tod"></span>0.67%</span></a></li><li id="p10-185" class="alt" translate="no"><a href="https://www.bestchange.ru/tether-trc20-to-tron.html" title="Курсы обмена Tether TRC20 (USDT) на TRON (TRX)">Tether TRC20 <span class="tor"></span> TRON <span class="tcr" title="Рейтинг обмена: +0.058652% за сутки"><span class="tou"></span>0.66%</span></a></li><li id="p59-93" translate="no"><a href="https://www.bestchange.ru/visa-mastercard-rub-to-bitcoin.html" title="Курсы обмена Visa/MasterCard RUB на Bitcoin (BTC)">Visa/MC RUB <span class="tor"></span> Bitcoin <span class="tcr" title="Рейтинг обмена: -0.021729% за сутки"><span class="tod"></span>0.66%</span></a></li><li id="p10-89" class="alt" translate="no"><a href="https://www.bestchange.ru/tether-trc20-to-dollar-cash.html" title="Курсы обмена Tether TRC20 (USDT) на Наличные USD">Tether TRC20 <span class="tor"></span> Наличные USD <span class="tcr" title="Рейтинг обмена: +0.015064% за сутки"><span class="tou"></span>0.65%</span></a></li><li id="p99-105" class="last-line" translate="no"><a href="https://www.bestchange.ru/litecoin-to-tinkoff.html" title="Курсы обмена Litecoin (LTC) на Тинькофф RUB">Litecoin <span class="tor"></span> Тинькофф RUB <span class="tcr" title="Рейтинг обмена: -0.025933% за сутки"><span class="tod"></span>0.64%</span></a></li></ul></div>
+  <div id="curr_tab">
+    <table id="curr_tab_c">
+      <tbody>
+        <tr class="group alt" onclick="">
+            <td class="glc" colspan="2">Выбор валют</td>
+        </tr>
+        <!-- onclick="window.location.href='/blog' -->
+        <tr class="group alt" onclick="">
+            <td class="rc">
+                {% for currency in currencies_first_half %}
+                    <a href="/valutes/valute/{{ currency.char_code }}">{{ currency }}</a>
+                {% endfor %}
+            </td>
+            <td class="rc">
+                {% for currency in currencies_second_half %}
+                    <a href="/valutes/valute/{{ currency.char_code }}">{{ currency }}</a>
+                {% endfor %}
+            </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    <!-- <a href="https://www.bestchange.ru/index.php?sc=1" id="tab_show_button" onclick="return switch_curr_list()" title="Развернуть полный список валют"><span></span></a> -->
+    {% block footer_indent %}
+         {% for i in 26|get_range %}
+            <br>
+        {% endfor %}
+    {% endblock %}
+</div>
+  <div class="footer">
+    <p class="copy">&copy; 2024 Компания Инк. Данные о валютах &nbsp; <a href="/valutes/about_site" title="Информация о сайте">О сайте</a> & <a href="/valutes/about_company" title="Информация о компании">О компании</a></p>
+    <div class="f-links">
+      <a href="/blog" title="Архив новостей">Новости</a> |
+      <a href="/valutes/faq" title="Справочная информация">FAQ</a>
+    </div>
+    <div class="clear"></div>
+    <div class="f-links" style="margin-top: 7px">
+      <a href="" title="Политика конфидинциальности">Конфиденциальность</a> |
+      <a href="" title="Пользовательское соглашение">Условия</a>
+    </div>
+    <div class="social"><a class="trustpilot" target="_blank" rel="nofollow noopener" href="https://www.trustpilot.com/review/www.bestchange.com?languages=ru" title="Отзывы на Trustpilot"></a><a class="vk" target="_blank" rel="nofollow noopener" href="https://vk.com/bestchange" title="Страница во ВКонтакте"></a><a class="telegram" target="_blank" rel="nofollow noopener" href="https://t.me/s/bestchangerus" title="Канал в Telegram"></a><a class="youtube" target="_blank" rel="nofollow noopener" href="https://www.youtube.com/bestchange" title="Канал на YouTube"></a><a class="livejournal" target="_blank" rel="nofollow noopener" href="https://bestchange.livejournal.com/" title="Блог на LiveJournal"></a><a class="zen" target="_blank" rel="nofollow noopener" href="https://dzen.ru/bestchange" title="Канал на Дзене"></a></div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+{% extends "index_base.html" %}
+
+{% block table %}
+<head>
+    <meta charset="UTF-8">
+    <title>Currency Rates Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="currencyChart" width="800" height="400"></canvas>
+    <script>
+        var ctx = document.getElementById('currencyChart').getContext('2d');
+        var dates = [];
+        var rates = [];
+
+        // Данные о курсах валют, полученные с сервера
+        var currencyData = {{ rates|safe }};
+
+        currencyData.forEach(function(dataPoint) {
+            dates.push(dataPoint.date);
+            rates.push(dataPoint.value);
+        });
+
+        var chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: dates,
+                datasets: [{
+                    label: '', // Убираем легенду, устанавливая пустую строку
+                    data: rates,
+                    borderColor: 'blue',
+                    fill: false
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Date'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Rate'
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+</body>
+{% endblock %}

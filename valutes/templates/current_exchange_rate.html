@@ -1,0 +1,17 @@
+{% extends "index_base.html" %}
+{% load custom_valutes_tags %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block main_menu %}
+    <li><span><a href="/valutes" title="Главная страниц сайта">Главная страница</a></span></li>
+    <li><span><a href="/blog" title="Список всех надежных обменников">Новости</a></span></li>
+    <li><span><a href="/valutes/about_company" title="Информация о компании">О компании</a></span></li>
+    <li><span><a href="/valutes/faq" title="Ответы на часто задаваемые вопросы">FAQ</a></span></li>
+    <li><span><a href="/valutes/about_site" title="Информация о сайте">О сайте</a></span></li>
+{% endblock %}
+
+{% block small_text %}
+    <h1>Текущий курс обмена:</h1>
+    <p>1 {{ valute_code }} = {{ rate|ru_money_format }} </p>
+{% endblock %}

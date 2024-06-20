@@ -1,0 +1,25 @@
+{% extends "index_base.html" %}
+{% load custom_valutes_tags %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block main_menu %}
+    <li class="active"><span><a name="main" title="Мониторинг выгодных курсов от надежных обменников">Главная страница</a></span></li>
+    <li><span><a href="/blog" title="Список всех надежных обменников">Новости</a></span></li>
+    <li><span><a href="/valutes/about_company" title="Информация о компании">О компании</a></span></li>
+    <li><span><a href="/valutes/faq" title="Ответы на часто задаваемые вопросы">FAQ</a></span></li>
+    <li><span><a href="/valutes/about_site" title="Информация о сайте">О сайте</a></span></li>
+{% endblock %}
+
+{% block small_text %}
+    <h2>Сайт о валютах</h2>
+    <p>Данный сайт предоставляет информацию о рынке валют</p>
+    <p>На сайте можно посмотреть актуальный курс значение курса выбранного дня. Получить график курса за последний месяц</p>
+    <p>Получайте информацию об актуальном курсе валют, согласно информации ЦБ РФ. Читайте новости, влияющие на рынок.</p>
+{% endblock %}
+
+{% block footer_indent %}
+    {% for i in 26|get_range %}
+        <br>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,9 @@
+{
+	"version": "2.187",
+	"api_version": 1,
+	"layout": {
+		"logo": "https://www.bestchange.com/images/banners/lg.png",
+		"color": "#6fb300",
+		"show_title": true
+	}
+}

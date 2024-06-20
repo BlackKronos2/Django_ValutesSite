@@ -1,0 +1,35 @@
+{% extends "index_base.html" %}
+
+{% block title %} Ответы на вопросы {% endblock %}
+
+{% block main_menu %}
+    <li><span><a href="/valutes" title="Главная страниц сайта">Главная страница</a></span></li>
+    <li><span><a href="/blog" title="Список всех надежных обменников">Новости</a></span></li>
+    <li><span><a href="/valutes/about_company" title="Информация о компании">О компании</a></span></li>
+    <li class="active"><span><a href="/valutes/faq" title="Ответы на часто задаваемые вопросы">FAQ</a></span></li>
+    <li><span><a href="/valutes/about_site" title="Информация о сайте">О сайте</a></span></li>
+{% endblock %}
+
+{% block small_text %}
+    <div class="faq-header">
+        <h1>Часто задаваемые вопросы (FAQ)</h1>
+    </div>
+
+    <dl>
+        <dt>Вопрос 1: Как мне начать использовать ваш продукт?</dt>
+        <dd>Ответ: Пока никак.</dd>
+
+        <dt>Вопрос 2: Сколько стоит подписка?</dt>
+        <dd>Ответ: Пока что всё бесплатно.</dd>
+
+        <dt>Вопрос 3: Могу ли я отменить подписку в любое время?</dt>
+        <dd>Ответ: Нет.</dd>
+
+        <dt>Вопрос 4: Какие способы оплаты вы принимаете?</dt>
+        <dd>Ответ: Пока никакие.</dd>
+    </dl>
+{% endblock %}
+
+{% block footer_indent %}
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

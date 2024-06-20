@@ -1,0 +1,52 @@
+{% extends "index_base.html" %}
+{% load custom_valutes_tags %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block main_menu %}
+    <li><span><a href="/valutes" title="Главная страниц сайта">Главная страница</a></span></li>
+    <li><span><a href="/blog" title="Список всех надежных обменников">Новости</a></span></li>
+    <li><span><a href="/valutes/about_company" title="Информация о компании">О компании</a></span></li>
+    <li><span><a href="/valutes/faq" title="Ответы на часто задаваемые вопросы">FAQ</a></span></li>
+    <li><span><a href="/valutes/about_site" title="Информация о сайте">О сайте</a></span></li>
+    <li><span><a href="/valutes/current-exchange-rate/{{ valute.char_code }}" title="Актуальный курс валюты">Актуальный курс</a></span></li>
+    <!--<li><span><a href="/valutes/currency-chart/{{ valute.char_code }}" title="График за месяц">График за месяц</a></span></li>-->
+{% endblock %}
+
+{% block small_text %}
+    <div id="rates_block">
+    <table id="content_table">
+    <thead>
+      <tr>
+<td class="info"><img src="images/ajax.png" id="update_image" class="hide" width="16" height="16"></td><td class="bj bp changer">Валюта</td>
+<td class="bj bp from"></td>
+<td class="bj bp to"></td>
+<td class="ar arp reserve"></td>
+<td class="bj bp to">Курс</td>
+<td class="bj bp reviews end"></td>
+</tr>
+    </thead>
+    <tbody>
+    {% for rate in rates %}
+    <tr>
+        <td class="ir"></td>
+        <td class="bj">
+            <div class="pa"><a rel="nofollow" target="_blank"></a><div class="pc"><div class="ca" translate="no">{{ rate.name }}</div></div></div>
+        </td>
+        <td class="bi"><div class="fs">1</div><div class="fm"></div></td>
+        <td class="bi">{{ rate.char_code }}</td>
+        <td class="ar arp" title="Максимум валюты Сбербанк RUB, сколько может выдать Transfer24">=</td>
+        <td class="rw">{{ rate.value|money_format }}<span class="end"></span></td>
+        <td class="bi"><div class="fs">{{ valute.char_code }}</div><div class="fm"></div></td>
+    <tr>
+    {% endfor %}
+    </tbody>
+  </table>
+    </div>
+{% endblock %}
+
+{% block footer_indent %}
+    {% for i in 26|get_range %}
+        <br>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "index_base.html" %}
+{% load custom_tags %}
+
+{% block title %}Новости{% endblock %}
+
+
+{% block main_menu %}
+    <li><span><a href="/valutes" title="Главная страниц сайта">Главная страница</a></span></li>
+    {% if perms.valutesBlog.add_currencyarticle %}
+        <li><span><p><a href="{% url 'valutesBlog:add_article' %}">Добавить</a></span></li>
+    {% endif %}
+    <!-- Панель с новостями-->
+    {% if page_obj.has_other_pages %}
+        {% if page_obj.has_previous %}
+            <li><span><a href="?page={{ page_obj.previous_page_number }}">&lt;</a></span></li>
+        {% endif %}
+        {% for p in paginator.page_range %}
+        {% if page_obj.number == p %}
+           <li><span style="color:white">{{ p }}</span></li>
+        {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2  %}
+            <li><span><a href="?page={{ p }}">{{ p }}</a></span></li>
+        {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+            <li><span><a href="?page={{ page_obj.next_page_number }}">&gt;</a></span></li>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+{% block small_text %}
+  <div class="middle-panel">
+    <!-- Панель с кнопками article_orders -->
+    <div class="button-panel" style="margin-bottom: 10px;">
+      {% for order in article_orders %}
+        <a href="/blog/order/{{ order.id }}" style="display: inline-block;background-color: #f8f9fa;border: 1px solid #ccc;padding: 5px;margin-right: 5px;color: inherit;text-decoration: none;">{{ order }}({{ order.articles_count }})</a>
+      {% endfor %}
+        <a href="/blog" class="custom-button-style" style="display: inline-block;background-color: #f8f9fa;border: 1px solid #ccc;padding: 5px;margin-right: 5px;color: inherit;text-decoration: none;">Все новости</a>
+    </div>
+
+    <!-- Панель с кнопками сортировки -->
+    <div class="button-panel" style="margin-bottom: 10px;">
+        <a href="/blog/order/earliest/" style="display: inline-block;background-color: #f8f9fa;border: 1px solid #ccc;padding: 5px;margin-right: 5px;color: inherit;text-decoration: none;">Самые ранние</a>
+        <a href="/blog/order/lates/" class="custom-button-style" style="display: inline-block;background-color: #f8f9fa;border: 1px solid #ccc;padding: 5px;margin-right: 5px;color: inherit;text-decoration: none;">Самые поздние</a>
+    </div>
+
+    <!-- Панель с кнопками сортировки -->
+    <div class="button-panel" style="margin-bottom: 10px;">
+        <a href="/blog/order/sort_rating/" style="display: inline-block;background-color: #f8f9fa;border: 1px solid #ccc;padding: 5px;margin-right: 5px;color: inherit;text-decoration: none;">Сортировать по рейтингу</a>
+    </div>
+
+  <!-- Панели новостей -->
+  <div id="info_news">
+      {% for article in displayable_articles %}
+      <div class="news-container" style="overflow: auto; max-height: 500px;">
+        <div class="news-panel" style="margin-bottom: 10px; padding: 10px; border: 1px solid #ccc;">
+            <div class="inner">
+                <dl><dt><small>{{ article.date|date:"Y-m-d" }}</small> {{ article.title }}</dt>
+                  {% if article.article_order %}
+                    <p style="text-align: left;">
+                        <small>{{ article.article_order }}</small>
+                    </p>
+                  {% endif %}
+                  {% if article.currencies.exists %}
+                    <p style="text-align: left;">
+                        <small>{{ article.currencies.all|join:", " }}</small>
+                    </p>
+                  {% endif %}
+                <dd><p>{{ article.anons }}</p></dd>
+                </dl>
+                <a href="/blog/post/{{ article.slug }}" style="display: inline-block;background-color: #f8f9fa;border: 1px solid #ccc;padding: 5px;margin-right: 5px;color: inherit;text-decoration: none;">Читать</a>
+            </div>
+            </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block footer_indent %}
+    {% for article in displayable_articles %}
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    {% endfor %}
+{% endblock %}
+

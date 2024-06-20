@@ -1,0 +1,6 @@
+{% extends "index_base.html" %}
+{% load custom_valutes_tags %}
+
+{% block content %}
+  <h2>Курс валют на момент {{ date }}: {{ specific_exchange_rate|ru_money_format }} </h2>
+{% endblock %}

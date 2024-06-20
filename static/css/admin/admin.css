@@ -1,0 +1,28 @@
+#header {
+ background: green;
+ color: black;
+}
+
+#header, .module caption {
+ background: green;
+ color: black;
+}
+
+div.breadcrumbs {
+ background: #BFEFFF;
+ color: black;
+}
+
+div.breadcrumbs {
+ background: #BFEFFF;
+ color: black;
+}
+
+.module h2, .module caption, .inline-group h2 {
+ background: green;
+ color: black;
+}
+
+a {
+ color: grey;
+}
